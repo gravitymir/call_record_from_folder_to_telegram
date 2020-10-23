@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf8">
+    <title><%= title%></title>
+    <style>
+      body{
+        background-color: rgb(255, 255, 255);
+        margin: 0;
+        padding: 0;
+      }
+      #flex_conteiner, .fw_top, .fw_bottom{
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        /*-webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+        justify-content: space-around;*/
+        -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: stretch;
+      }
+      a { 
+        text-decoration: none;
+      } 
+      #botton_left, #botton_right{
+        border-radius: 30px;
+        width: 150px;
+        background-color: #ffffff;
+        color: #000000;
+        font-size: 1.5rem;
+        padding: 10px;
+        border: 1px solid black;
+      }
+      #botton_right{
+        width: 150px;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-align-items: flex-end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+      }
+
+      #calendar{
+        width: 1046px;
+        padding: 0 0 10px 0;
+        background-color: #ffffff;
+      }
+      #calendar_title{
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+        justify-content: space-around;
+        -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      #calendar_day_of_week{
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+        justify-content: space-around;
+        -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      #calendar_table{
+        margin: 0px 25px;
+        border-top: 2px solid rgb(0, 0, 0);
+        border-left: 2px solid rgb(0, 0, 0);
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-align-content: flex-start;
+        -ms-flex-line-pack: start;
+        align-content: flex-start;
+        -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+      }
+      #calendar_head{
+        margin: 0px 25px 3px;
+      }
+      #calendar_title{
+        margin: 10px 0;
+        font-weight: bold;
+        font-size: 2em;
+      }
+      #calendar_day_of_week{
+        
+        font-weight: bold;
+        font-size: x-large;
+      }
+      .date_box{
+        width: 140px;
+        height: 108px;
+        border-bottom: 2px solid rgb(0, 0, 0);
+        border-right: 2px solid rgb(0, 0, 0);
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        -webkit-align-items: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+      }
+
+      .fw_top{
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-align-content: flex-start;
+        -ms-flex-line-pack: start;
+        align-content: flex-start;
+        -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+      }
+
+      .fw_bottom{
+        -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        -webkit-align-content: flex-end;
+        -ms-flex-line-pack: end;
+        align-content: flex-end;
+        -webkit-align-items: flex-end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+      }
+      .date{
+        font-weight: 700;
+        font-size: 1.7em;
+        margin-left: 2px;
+        font-family: sans-serif;
+        z-index: 5;
+        color: black;
+      }
+      
+      .logo{
+        padding: 5px;
+        border: 1px solid #000;;
+      }
+      .ampm_day{
+        background-image: url(img/sun.png);
+        width: 30px;
+        height: 30px;
+      }
+      .ampm_night{
+        background-image: url(img/moon.png);
+        width: 30px;
+        height: 30px;
+      }
+      .smena_1_black {
+        background: linear-gradient(142.5deg, rgb(50, 50, 0) 49%, rgb(0, 0, 0) 49.5%,rgb(0, 0, 0) 50.5%, rgb(0, 50, 0) 49%);
+      }
+      .smena_2_black {
+        background: linear-gradient(142.5deg, rgb(0, 50, 0) 49%, rgb(0, 0, 0) 49.5%,rgb(0, 0, 0) 50.5%, rgb(50, 0, 0) 49%);
+      }
+      .smena_3_black {
+        background: linear-gradient(142.5deg, rgb(0, 0, 50) 49%, rgb(0, 0, 0) 49.5%,rgb(0, 0, 0) 50.5%, rgb(50, 50, 0) 49%);
+      }
+      .smena_4_black {
+        background: linear-gradient(142.5deg, rgb(50, 0, 0) 49%, rgb(0, 0, 0) 49.5%,rgb(0, 0, 0) 50.5%, rgb(0, 0, 50) 49%);
+      }
+      .smena_1 {
+        background: linear-gradient(142.5deg, #fbf323 49%, rgb(0, 0, 0) 49.5%,rgb(0, 0, 0) 50.5%, #57bf63 49%);
+      }
+      .smena_2 {
+        background: linear-gradient(142.5deg, #57bf63 49%, rgb(0, 0, 0) 49.5%,rgb(0, 0, 0) 50.5%, #f33339 49%);
+      }
+      .smena_3 {
+        background: linear-gradient(142.5deg, #226bd4 49%, rgb(0, 0, 0) 49.5%,rgb(0, 0, 0) 50.5%, #fbf323 49%);
+      }
+      .smena_4 {
+        background: linear-gradient(142.5deg, #f33339 49%, rgb(0, 0, 0) 49.5%,rgb(0, 0, 0) 50.5%, #226bd4 49%);
+      }
+      .shift_logo{
+        position: absolute;
+      }
+      .smena_1_black > .fw_top > .ampm_day ,
+      .smena_2_black > .fw_top > .ampm_day ,
+      .smena_3_black > .fw_top > .ampm_day ,
+      .smena_4_black > .fw_top > .ampm_day {
+        background-image: url(img/sun_black.png);
+        width: 30px;
+        height: 30px;
+      }
+      .smena_1_black > .fw_top > .date,
+      .smena_2_black > .fw_top > .date,
+      .smena_3_black > .fw_top > .date,
+      .smena_4_black > .fw_top > .date {
+        font-weight: 700;
+        font-size: 1.7em;
+        margin-left: 2px;
+        font-family: sans-serif;
+        z-index: 5;
+        color: #5c5c5c;
+      }
+      .smena_1_black > .fw_bottom > .ampm_night ,
+      .smena_2_black > .fw_bottom > .ampm_night ,
+      .smena_3_black > .fw_bottom > .ampm_night ,
+      .smena_4_black > .fw_bottom > .ampm_night {
+        background-image: url(img/moon_black.png);
+        width: 30px;
+        height: 30px;
+      }
+      .smena_1 > .fw_top::after{
+        margin-top: 13px;
+        content: url(img/ukol.png);
+        position: absolute;
+      }
+      .smena_1 > .fw_bottom::before{
+        margin-top: 3px;
+        margin-left: -19px;
+        content: url(img/fant.png);
+        position: absolute;
+      }
+      .smena_2 > .fw_top::after{
+        margin-top: 26px;
+        margin-left: -6px;
+        content: url(img/fant.png);
+        position: absolute;
+      }
+      .smena_2 > .fw_bottom::before{
+        margin-top: 3px;
+        margin-left: -16px;
+        content: url(img/old.png);
+        position: absolute;
+      }
+      .smena_3 > .fw_top::after{
+        margin-top: 25px;
+        margin-left: -7px;
+        content: url(img/wom.png);
+        position: absolute;
+        
+      }
+      .smena_3 > .fw_bottom::before{
+        
+        margin-top: 3px;
+        margin-left: -19px;
+        content: url(img/ukol.png);
+        position: absolute;
+      }
+      .smena_4 > .fw_top::after{
+        margin-top: 22px;
+        margin-left: -5px;
+        content: url(img/old.png);
+        position: absolute;
+      }
+      .smena_4 > .fw_bottom::before{
+        margin-top: 3px;
+        margin-left: -20px;
+        content: url(img/wom.png);
+        position: absolute;
+      }
+      .smena_1_black > .fw_top::after{
+        margin-top: 13px;
+        content: url(img/ukol_black.png);
+        position: absolute;
+      }
+      .smena_1_black > .fw_bottom::before{
+        margin-top: 3px;
+        margin-left: -19px;
+        content: url(img/fant_black.png);
+        position: absolute;
+      }
+      .smena_2_black > .fw_top::after{
+        margin-top: 26px;
+        margin-left: -6px;
+        content: url(img/fant_black.png);
+        position: absolute;
+      }
+      .smena_2_black > .fw_bottom::before{
+        margin-top: 3px;
+        margin-left: -16px;
+        content: url(img/old_black.png);
+        position: absolute;
+      }
+      .smena_3_black > .fw_top::after{
+        margin-top: 25px;
+        margin-left: -7px;
+        content: url(img/wom_black.png);
+        position: absolute;
+        
+      }
+      .smena_3_black > .fw_bottom::before{
+        
+        margin-top: 3px;
+        margin-left: -19px;
+        content: url(img/ukol_black.png);
+        position: absolute;
+      }
+      .smena_4_black > .fw_top::after{
+        margin-top: 22px;
+        margin-left: -5px;
+        content: url(img/old_black.png);
+        position: absolute;
+      }
+      .smena_4_black > .fw_bottom::before{
+        margin-top: 3px;
+        margin-left: -20px;
+        content: url(img/wom_black.png);
+        position: absolute;
+      }
+      #data_block, #time_block{
+        visibility: hidden;
+      }
+      #controls{
+        margin-top: 5px;
+        position: absolute;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        width: 500px;
+      }
+    </style>
+</head>
+<body>
+<div id="body">
+  <% if(!data.hide_control){ %>
+  <div id="controls">
+    <a href="?m=<%= data.prev.m %>">
+    <div id="botton_left">
+        ⬅️ <%= data.prev.m_name %>
+    </div>
+  </a>
+  <a href="?m=<%= data.next.m %>">
+        <div id="botton_right">
+        <%= data.next.m_name %> ➡️
+        </div>
+    </a>
+  </div>
+  <% } %>
+    <div id="flex_conteiner">
+      <div id="calendar">
+        <div id="calendar_head">
+          <div id="calendar_title">
+            <%= data.time_block %>
+          </div>
+          <div id="calendar_day_of_week">
+            <div>Пн</div>
+            <div>Вт</div>
+            <div>Ср</div>
+            <div>Чт</div>
+            <div>Пт</div>
+            <div>Сб</div>
+            <div>Вс</div>
+          </div>
+        </div>
+        <div id="calendar_table">
+          <% data.arr.forEach(function(item){ %>
+            <div class="date_box <%= item.smena%> <%= item.colorize %>">
+              <div class="fw_top">
+                <div class="date">
+                  <%= item.date %>
+                </div>
+                <div class="ampm_day"></div>
+              </div>
+              <div class="fw_middle">
+                <div class="shift_logo">
+                </div>
+              </div>
+              <div class="fw_bottom">
+                <div class="ampm_night"></div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+
+      
+    </div>
+    
+    
+</div>
+<div id="data_block"><%= data.data_block %></div>
+<div id="time_block"><%= data.time_block %></div>
+</body>
+<script></script>
+</html>

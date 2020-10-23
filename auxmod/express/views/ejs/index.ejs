@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <link rel="stylesheet" href="/fontawesome/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title><%= title %></title>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <main>
+        <v-container>
+          {{message}}
+          <v-icon light>list</v-icon>
+          <template>
+          <div>
+            <v-alert color="success" icon="check_circle" value="true">
+              This is a success alert.
+            </v-alert>
+
+            <v-alert color="info" icon="info" value="true">
+              This is a info alert.
+            </v-alert>
+
+            <v-alert color="warning" icon="priority_high" value="true">
+              This is a warning alert.
+            </v-alert>
+
+            <v-alert color="error" icon="warning" value="true">
+              This is a error alert.
+            </v-alert>
+
+          </div>
+        </template>
+
+        <template>
+          <div>
+            <v-alert color="info" icon="info" dismissible v-model="alert">
+              This is a success alert that is closable.
+            </v-alert>
+
+            <div class="text-xs-center">
+              <v-btn color="primary" dark v-if="!alert" v-on:click="alert = true">Reset</v-btn>
+            </div>
+          </div>
+        </template>
+
+
+        <template>
+          <div>
+            <div class="text-xs-center">
+              <v-btn color="primary" @click="alert_toggle = !alert_toggle">Toggle</v-btn>
+            </div>
+            <v-alert
+              color="success"
+              icon="check_circle"
+              :value="alert_toggle"
+              transition="scale-transition"
+            >
+              This is a success alert.
+            </v-alert>
+          </div>
+        </template>
+
+
+        <template>
+          <v-card>
+            <v-card-text>
+              <v-container grid-list-md>
+                <v-layout row wrap>
+                  <v-flex xs12 sm6 md4>
+                    <v-slider
+                      v-model="slider"
+                      :min="5"
+                      :max="256"
+                      label="Size"
+                      thumb-label
+                    ></v-slider>
+                    <v-switch
+                      label="Tile"
+                      v-model="tile"
+                    ></v-switch>
+                  </v-flex>
+                  <v-flex
+                    xs12
+                    sm6
+                    md8
+                    text-xs-center
+                    layout
+                    align-center
+                    justify-center
+                  >
+                    <v-avatar
+                      :tile="tile"
+                      :size="avatarSize"
+                      class="grey lighten-4"
+                    >
+                      <img src="/img/vue.png" alt="avatar">
+                    </v-avatar>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-text>
+          </v-card>
+        </template>
+
+
+
+        <template>
+          <v-layout justify-center column>
+            <v-subheader>Today</v-subheader>
+            <v-expansion-panel>
+              <v-expansion-panel-content hide-actions>
+                <v-layout align-center row spacer slot="header">
+                  <v-flex xs1>
+                    <v-avatar size="36px" slot="activator">
+                      <img src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460" alt="">
+                    </v-avatar>
+                  </v-flex>
+                  <v-flex xs3>
+                    <strong>John Leider</strong>
+                  </v-flex>
+                  <v-flex no-wrap>
+                    <strong>Welcome to Vuetify.js!</strong>
+                     —
+                  </v-flex>
+                  <v-flex
+                    class="grey--text"
+                    ellipsis
+                  >
+                    Thank you for joining our community and for using Vuetify in your projects
+                  </v-flex>
+                </v-layout>
+                <v-card>
+                  <v-divider></v-divider>
+                  <v-card-text>
+                    Hello
+                  </v-card-text>
+                </v-card>
+              </v-expansion-panel-content>
+              <v-expansion-panel-content hide-actions>
+                <v-layout align-center row spacer slot="header">
+                  <v-flex xs1>
+                    <v-avatar size="36px" slot="activator">
+                      <v-icon color="red">people</v-icon>
+                    </v-avatar>
+                  </v-flex>
+                  <v-flex xs3>
+                    <strong class="red--text">Social</strong> <span class="grey--text">(3)</span>
+                  </v-flex>
+                  <v-flex>
+                    <v-chip label small color="red lighten-4" class="ml-0">1 new</v-chip>
+                    <strong>Twitter</strong>
+                  </v-flex>
+                </v-layout>
+                <v-card>
+                  <v-divider></v-divider>
+                  <v-card-text>
+                    Hello
+                  </v-card-text>
+                </v-card>
+              </v-expansion-panel-content>
+              <v-expansion-panel-content hide-actions>
+                <v-layout align-center row spacer slot="header">
+                  <v-flex xs1>
+                    <v-avatar size="36px" slot="activator">
+                      <v-icon color="cyan darken-1">local_offer</v-icon>
+                    </v-avatar>
+                  </v-flex>
+                  <v-flex xs3>
+                    <strong class="cyan--text text--darken-1">Promos</strong> <span class="grey--text">(4)</span>
+                  </v-flex>
+                  <v-flex xs3 no-wrap>
+                    <v-chip label small color="cyan lighten-4" class="ml-0">2 new</v-chip>
+                    <strong>Shop your way</strong>
+                    <span>, New deals available, Join Today</span>
+                  </v-flex>
+                </v-layout>
+                <v-card>
+                  <v-card-text>
+
+
+
+
+
+
+
+                    <v-layout wrap justify-space-around align-center>
+                      <v-badge overlap color="green">
+                       <v-icon slot="badge" class="white--text">done</v-icon>
+                        <v-avatar class="indigo">
+                          <v-icon dark>account_circle</v-icon>
+                        </v-avatar>
+                        </v-badge>
+
+                        <v-avatar>
+                          <img src="/img/vue.png" alt="John">
+                        </v-avatar>
+
+                        <v-badge overlap color="green">
+                          <span slot="badge">{{parseInt(avatarSize)}}</span>
+                          <v-avatar class="purple red--after" >
+                            <v-icon dark>notifications</v-icon>
+                          </v-avatar>
+                        </v-badge>
+                        <v-avatar class="teal">
+                          <span class="white--text headline">C</span>
+                        </v-avatar>
+                        <v-avatar class="red">
+                          <span class="white--text headline">J</span>
+                        </v-avatar>
+                      </v-layout>
+
+
+
+
+
+
+
+
+                  </v-card-text>
+                </v-card>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-layout>
+        </template>
+
+
+
+        <template>
+          <v-container fluid class="text-xs-center">
+            <v-layout flex wrap row justify-space-between>
+              <v-flex xs12>
+                <v-btn @click.native="show = !show">toggle</v-btn>
+              </v-flex>
+              <v-flex xs12 class="mt-5">
+                <v-badge color="cyan" v-model="show" left>
+                  <span slot="badge">6</span>
+                  <v-icon large color="grey lighten-1">shopping_cart</v-icon>
+                </v-badge>
+                <v-badge color="indigo" v-model="show">
+                  <span slot="badge">6</span>
+                  <v-icon large color="grey">mail</v-icon>
+                </v-badge>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </template>
+
+
+
+
+
+
+
+        <template>
+  <v-card height="200px" style="overflow: hidden;">
+    <v-card-text class="text-xs-center">
+      <v-btn flat color="primary" @click.native="e31 = !e31">Toggle Nav</v-btn>
+    </v-card-text>
+    <v-bottom-nav absolute :value="e31" :active.sync="e3" class="transparent">
+      <v-btn flat color="teal">
+        <span>Recents</span>
+        <v-icon>history</v-icon>
+      </v-btn>
+      <v-btn flat color="teal">
+        <span>Favorites</span>
+        <v-icon>favorite</v-icon>
+      </v-btn>
+      <v-btn flat color="teal">
+        <span>Nearby</span>
+        <v-icon>place</v-icon>
+      </v-btn>
+    </v-bottom-nav>
+  </v-card>
+</template>
+
+
+<template>
+  <div class="text-xs-center">
+    <v-bottom-sheet v-model="sheet">
+      <v-btn slot="activator" color="purple" dark>Click me</v-btn>
+      <v-list>
+        <v-subheader>Open in</v-subheader>
+        <v-list-tile
+          v-for="tile in tiles"
+          :key="tile.title"
+          @click="sheet = false"
+        >
+          <v-list-tile-avatar>
+            <v-avatar size="32px" tile>
+              <img :src="`/img/${tile.img}`" :alt="tile.title">
+            </v-avatar>
+          </v-list-tile-avatar>
+          <v-list-tile-title>{{ tile.title }}</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-bottom-sheet>
+  </div>
+</template>
+
+
+<template>
+  <v-card flat class="py-5">
+    <v-card-text>
+      <v-container fluid class="pa-0">
+        <v-layout row wrap>
+          <v-flex xs12 sm6 class="py-2">
+            <p>Exclusive</p>
+            <v-btn-toggle v-model="toggle_exclusive">
+              <v-btn flat>
+                <v-icon>format_align_left</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_align_center</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_align_right</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_align_justify</v-icon>
+              </v-btn>
+            </v-btn-toggle>
+          </v-flex>
+          <v-flex xs12 sm6 class="py-2">
+            <p>Multiple</p>
+            <v-btn-toggle multiple v-model="toggle_multiple">
+              <v-btn flat>
+                <v-icon>format_bold</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_italic</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_underlined</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_color_fill</v-icon>
+              </v-btn>
+            </v-btn-toggle>
+          </v-flex>
+          <v-flex xs12 sm6 class="py-2">
+            <p>No Options Selected</p>
+            <v-btn-toggle v-model="toggle_none">
+              <v-btn flat>
+                <v-icon>format_align_left</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_align_center</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_align_right</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_align_justify</v-icon>
+              </v-btn>
+            </v-btn-toggle>
+          </v-flex>
+          <v-flex xs12 sm6 class="py-2">
+            <p>Mandatory</p>
+            <v-btn-toggle mandatory v-model="toggle_one">
+              <v-btn flat>
+                <v-icon>format_align_left</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_align_center</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_align_right</v-icon>
+              </v-btn>
+              <v-btn flat>
+                <v-icon>format_align_justify</v-icon>
+              </v-btn>
+            </v-btn-toggle>
+          </v-flex>
+          <v-flex xs12 sm6 class="py-2">
+            <p>Text Options</p>
+            <v-btn-toggle v-model="text">
+              <v-btn flat value="left">
+                Left
+              </v-btn>
+              <v-btn flat value="center">
+                Center
+              </v-btn>
+              <v-btn flat value="right">
+                Right
+              </v-btn>
+              <v-btn flat value="justify">
+                Justify
+              </v-btn>
+            </v-btn-toggle>
+          </v-flex>
+          <v-flex xs12 sm6 class="py-2">
+            <p>Text & Icon Options</p>
+            <v-btn-toggle v-model="icon">
+              <v-btn flat value="left">
+                <span>Left</span>
+                <v-icon>format_align_left</v-icon>
+              </v-btn>
+              <v-btn flat value="center">
+                <span>Center</span>
+                <v-icon>format_align_center</v-icon>
+              </v-btn>
+              <v-btn flat value="right">
+                <span>Right</span>
+                <v-icon>format_align_right</v-icon>
+              </v-btn>
+              <v-btn flat value="justify">
+                <span>Justify</span>
+                <v-icon>format_align_justify</v-icon>
+              </v-btn>
+            </v-btn-toggle>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-card-text>
+  </v-card>
+</template>
+
+<template>
+  <div class="text-xs-center">
+    <v-btn fab dark small color="primary">
+      <v-icon dark>remove</v-icon>
+    </v-btn>
+    <v-btn fab dark small color="pink">
+      <v-icon dark>favorite</v-icon>
+    </v-btn>
+    <v-btn fab dark color="indigo">
+      <v-icon dark>add</v-icon>
+    </v-btn>
+    <v-btn fab dark color="teal">
+      <v-icon dark>list</v-icon>
+    </v-btn>
+    <v-btn fab dark large color="cyan">
+      <v-icon dark>edit</v-icon>
+    </v-btn>
+    <v-btn fab dark large color="purple">
+      <v-icon dark>android</v-icon>
+    </v-btn>
+  </div>
+</template>
+
+<template>
+  <v-card flat>
+    <v-card-text>
+      <v-container fluid class="pa-0">
+        <v-layout row wrap>
+          <v-flex xs12>
+            <p>Normal</p>
+          </v-flex>
+          <v-flex xs12 sm3>
+            <v-btn flat icon color="pink">
+              <v-icon>favorite</v-icon>
+            </v-btn>
+          </v-flex>
+          <v-flex xs12 sm3>
+            <v-btn flat icon color="indigo">
+              <v-icon>star</v-icon>
+            </v-btn>
+          </v-flex>
+          <v-flex xs12 sm3>
+            <v-btn flat icon color="green">
+              <v-icon>cached</v-icon>
+            </v-btn>
+          </v-flex>
+          <v-flex xs12 sm3>
+            <v-btn flat icon color="deep-orange">
+              <v-icon>thumb_up</v-icon>
+            </v-btn>
+          </v-flex>
+        </v-layout>
+        <v-layout row wrap class="mt-5">
+          <v-flex xs12>
+            <p>Disabled</p>
+          </v-flex>
+          <v-flex xs12 sm3>
+            <v-btn icon disabled>
+              <v-icon>favorite</v-icon>
+            </v-btn>
+          </v-flex>
+          <v-flex xs12 sm3>
+            <v-btn icon disabled>
+              <v-icon>star</v-icon>
+            </v-btn>
+          </v-flex>
+          <v-flex xs12 sm3>
+            <v-btn icon disabled>
+              <v-icon>cached</v-icon>
+            </v-btn>
+          </v-flex>
+          <v-flex xs12 sm3>
+            <v-btn icon disabled>
+              <v-icon>thumb_up</v-icon>
+            </v-btn>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-card-text>
+  </v-card>
+</template>
+
+
+
+
+<template>
+  <div class="text-xs-center">
+    <v-btn
+      color="secondary"
+      :loading="loading"
+      @click.native="loader = 'loading'"
+      :disabled="loading"
+    >
+      Accept Terms
+    </v-btn>
+
+    <v-btn
+      :loading="loading3"
+      @click.native="loader = 'loading3'"
+      :disabled="loading3"
+      color="blue-grey"
+      dark
+    >
+      Upload
+      <v-icon right dark>cloud_upload</v-icon>
+    </v-btn>
+
+    <v-btn
+      color="success"
+      :loading="loading2"
+      @click.native="loader = 'loading2'"
+      :disabled="loading2"
+    >
+      Custom Loader
+      <span slot="loader">Loading...</span>
+    </v-btn>
+
+    <v-btn
+      color="info"
+      :loading="loading4"
+      @click.native="loader = 'loading4'"
+      :disabled="loading4"
+    >
+      Icon Loader
+      <span slot="loader" class="custom-loader">
+        <v-icon light>cached</v-icon>
+      </span>
+    </v-btn>
+  </div>
+</template>
+<template>
+  <v-container fluid class="pa-0">
+    <v-layout row wrap>
+      <v-flex xs12 sm6>
+        <div class="text-xs-center">
+          <v-card flat>
+            <v-card-text>
+              <div>
+                <v-btn small color="primary" dark>Small Button</v-btn>
+              </div>
+              <div>
+                <v-btn color="warning" dark>Normal Button</v-btn>
+              </div>
+              <div>
+                <v-btn color="error" dark large>Large Button</v-btn>
+              </div>
+            </v-card-text>
+          </v-card>
+        </div>
+      </v-flex>
+      <v-flex xs12 sm6>
+        <div class="text-xs-center">
+          <v-card flat>
+            <v-card-text>
+              <div>
+                <v-btn color="primary" fab small dark>
+                  <v-icon>edit</v-icon>
+                </v-btn>
+              </div>
+              <div>
+                <v-btn color="warning" fab dark>
+                  <v-icon>account_circle</v-icon>
+                </v-btn>
+              </div>
+              <div>
+                <v-btn color="error" fab large dark>
+                  <v-icon>alarm</v-icon>
+                </v-btn>
+              </div>
+            </v-card-text>
+          </v-card>
+        </div>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</template>
+<template>
+  <div class="text-xs-center">
+    <v-btn outline color="indigo">Outline Button</v-btn>
+    <v-btn outline fab color="teal">
+      <v-icon>list</v-icon>
+    </v-btn>
+    <v-btn outline large fab color="indigo">
+      <v-icon>edit</v-icon>
+    </v-btn>
+    <v-btn round color="primary" dark>Rounded Button</v-btn>
+  </div>
+  <v-btn block color="secondary" dark>Block Button</v-btn>
+</template>
+
+<template>
+  <v-parallax src="/img/material.jpg">
+  <v-card id="create">
+    <v-container fluid grid-list-md>
+      <v-layout child-flex wrap>
+        <v-flex xs12 sm6 md4>
+          <v-subheader>Options</v-subheader>
+          <v-checkbox v-model="hover" label="Open on hover" hide-details></v-checkbox>
+        </v-flex>
+        <v-flex xs12 sm6 md4>
+          <v-subheader>FAB location</v-subheader>
+          <v-checkbox v-model="top" label="Top" hide-details></v-checkbox>
+          <v-checkbox v-model="right" label="Right" hide-details></v-checkbox>
+          <v-checkbox v-model="bottom" label="Bottom" hide-details></v-checkbox>
+          <v-checkbox v-model="left" label="Left" hide-details></v-checkbox>
+        </v-flex>
+        <v-flex xs12 sm6 md4>
+          <v-subheader>Speed dial direction</v-subheader>
+          <v-radio-group v-model="direction" hide-details>
+            <v-radio value="top" label="Top"></v-radio>
+            <v-radio value="right" label="Right"></v-radio>
+            <v-radio value="bottom" label="Bottom"></v-radio>
+            <v-radio value="left" label="Left"></v-radio>
+          </v-radio-group>
+        </v-flex>
+        <v-flex xs12 sm6 md4>
+          <v-subheader>Transition</v-subheader>
+          <v-radio-group v-model="transition" hide-details>
+            <v-radio value="slide-y-transition" label="Slide y"></v-radio>
+            <v-radio value="slide-y-reverse-transition" label="Slide y reverse"></v-radio>
+            <v-radio value="slide-x-transition" label="Slide x"></v-radio>
+            <v-radio value="slide-x-reverse-transition" label="Slide x reverse"></v-radio>
+            <v-radio value="scale-transition" label="Scale"></v-radio>
+          </v-radio-group>
+        </v-flex>
+      </v-layout>
+    </v-container>
+    <v-speed-dial
+      v-model="fab"
+      :top="top"
+      :bottom="bottom"
+      :right="right"
+      :left="left"
+      :direction="direction"
+      :hover="hover"
+      :transition="transition"
+    >
+      <v-btn
+        slot="activator"
+        color="blue darken-2"
+        dark
+        fab
+        hover
+        v-model="fab"
+      >
+        <v-icon>account_circle</v-icon>
+        <v-icon>close</v-icon>
+      </v-btn>
+      <v-btn
+        fab
+        dark
+        small
+        color="green"
+      >
+        <v-icon>edit</v-icon>
+      </v-btn>
+      <v-btn
+        fab
+        dark
+        small
+        color="indigo"
+      >
+        <v-icon>add</v-icon>
+      </v-btn>
+      <v-btn
+        fab
+        dark
+        small
+        color="red"
+      >
+        <v-icon>delete</v-icon>
+      </v-btn>
+    </v-speed-dial>
+  </v-card>
+  </v-parallax>
+</template>
+
+
+<template>
+    <v-layout row wrap>
+      <v-flex md12 lg4>
+        <v-date-picker
+        locale="ru-ru"
+        v-model="picker"></v-date-picker>
+      </v-flex>
+      <v-flex md12 lg8 class="hidden-xs-only">
+        <v-date-picker
+        locale="ru-ru"
+         v-model="picker2"
+         landscape></v-date-picker>
+      </v-flex>
+    </v-layout>
+</template>
+
+<template>
+  <v-form v-model="valid">
+    <v-text-field
+      label="Name"
+      v-model="name"
+      :rules="nameRules"
+      :counter="10"
+      required
+    ></v-text-field>
+    <v-text-field
+      label="E-mail"
+      v-model="email"
+      :rules="emailRules"
+      required
+    ></v-text-field>
+  </v-form>
+</template>
+
+
+<template>
+  <v-card flat>
+    <v-card-text>
+      <v-container fluid>
+        <v-layout row wrap>
+          <v-flex xs12 sm4 md4>
+            <v-switch label="red"
+                        v-model="ex11"
+                        color="red"
+                        value="red"
+                        hide-details></v-switch>
+            <v-switch label="red darken-3"
+                        v-model="ex11"
+                        color="red darken-3"
+                        value="red darken-3"
+                        hide-details></v-switch>
+          </v-flex>
+          <v-flex xs12 sm4 md4>
+            <v-switch label="indigo"
+                        v-model="ex11"
+                        color="indigo"
+                        value="indigo"
+                        hide-details></v-switch>
+            <v-switch label="indigo darken-3"
+                        v-model="ex11"
+                        color="indigo darken-3"
+                        value="indigo darken-3"
+                        hide-details></v-switch>
+          </v-flex>
+          <v-flex xs12 sm4 md4>
+            <v-switch label="orange"
+                        v-model="ex11"
+                        color="orange"
+                        value="orange"
+                        hide-details></v-switch>
+            <v-switch label="orange darken-3"
+                        v-model="ex11"
+                        color="orange darken-3"
+                        value="orange darken-3"
+                        hide-details></v-switch>
+          </v-flex>
+        </v-layout>
+
+        <v-layout row wrap class="mt-5">
+          <v-flex xs12 sm4 md4>
+            <v-switch label="primary"
+                        v-model="ex11"
+                        color="primary"
+                        value="primary"
+                        hide-details></v-switch>
+            <v-switch label="secondary"
+                        v-model="ex11"
+                        color="secondary"
+                        value="secondary"
+                        hide-details></v-switch>
+          </v-flex>
+          <v-flex xs12 sm4 md4>
+            <v-switch label="success"
+                        v-model="ex11"
+                        color="success"
+                        value="success"
+                        hide-details></v-switch>
+            <v-switch label="info"
+                        v-model="ex11"
+                        color="info"
+                        value="info"
+                        hide-details></v-switch>
+          </v-flex>
+          <v-flex xs12 sm4 md4>
+            <v-switch label="warning"
+                        v-model="ex11"
+                        color="warning"
+                        value="warning"
+                        hide-details></v-switch>
+            <v-switch label="error"
+                        v-model="ex11"
+                        color="error"
+                        value="error"
+                        hide-details></v-switch>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-card-text>
+  </v-card>
+</template>
+<template>
+  <v-layout v-resize="onResize" column align-center justify-center>
+    <v-subheader>Window Size</v-subheader>
+    {{ windowSize }}
+  </v-layout>
+</template>
+<template>
+  <v-layout column align-center justify-center v-scroll="onScroll">
+    <v-subheader>Offset Top</v-subheader>
+    {{ offsetTop }}
+  </v-layout>
+</template>
+
+
+        <template>
+          <v-footer app class="pa-3">
+            <v-spacer>
+
+              <v-layout justify-space-around>
+                <v-icon>fa-lock</v-icon>
+
+                <v-icon>fa-search</v-icon>
+
+                <v-icon>fa-list</v-icon>
+
+                <v-icon>fa-edit</v-icon>
+
+                <v-icon>fa-dashboard</v-icon>
+
+                <v-icon>fa-thermometer-empty</v-icon>
+              </v-layout>
+
+            </v-spacer>
+            <div>© {{ new Date().getFullYear() }}</div>
+          </v-footer>
+        </template>
+        </v-container>
+
+
+      </main>
+    </v-app>
+
+  </div>
+
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+
+  <script>
+    new Vue({
+      el:'#app',
+      data: {
+        message: 'Моё сообщение',
+        e3: 1,
+        e31: true,
+        alert: true,
+        alert_toggle: true,
+        slider: 56,
+        tile: false,
+        show: true,
+
+        text: 'center',
+        icon: 'justify',
+        toggle_none: null,
+        toggle_one: 0,
+        toggle_exclusive: 2,
+        toggle_multiple: [0, 1, 2],
+
+        sheet: false,
+        tiles: [
+          { img: 'keep.png', title: 'Keep' },
+          { img: 'inbox.png', title: 'Inbox' },
+          { img: 'hangouts.png', title: 'Hangouts' },
+          { img: 'messenger.png', title: 'Messenger' },
+          { img: 'google.png', title: 'Google+' },
+        ],
+        loader: null,
+        loading: false,
+        loading2: false,
+        loading3: false,
+        loading4: false,
+
+        direction: "bottom",
+        fab: false,
+        fling: false,
+        hover: true,
+        tabs: null,
+        top: true,
+        right: true,
+        bottom: false,
+        left: false,
+        transition: 'slide-y-transition',
+
+        valid: false,
+        name: '',
+        nameRules: [
+          (v) => !!v || 'Name is required',
+          (v) => v.length <= 10 || 'Name must be less than 10 characters'
+        ],
+        email: '',
+        emailRules: [
+          (v) => !!v || 'E-mail is required',
+          (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+        ],
+
+        picker: null,
+        picker2: null,
+        ex11: ['red', 'indigo', 'orange', 'primary', 'secondary', 'success', 'info', 'warning', 'error',
+              'red darken-3', 'indigo darken-3', 'orange darken-3'],
+        windowSize: {
+          x: 0,
+          y: 0
+        },
+        offsetTop: 0
+
+
+      },
+      computed: {
+        avatarSize () {
+          return `${this.slider}px`
+        },
+        activeFab () {
+        switch (this.tabs) {
+          case 'one': return { 'class': 'purple', icon: 'account_circle' }
+          case 'two': return { 'class': 'red', icon: 'edit' }
+          case 'three': return { 'class': 'green', icon: 'keyboard_arrow_up' }
+          default: return {}
+        }
+      }
+      },
+      watch: {
+      loader () {
+        const l = this.loader
+        this[l] = !this[l]
+
+        setTimeout(() => (this[l] = false), 3000)
+
+        this.loader = null
+      },
+      top (val) {
+        this.bottom = !val
+      },
+      right (val) {
+        this.left = !val
+      },
+      bottom (val) {
+        this.top = !val
+      },
+      left (val) {
+        this.right = !val
+      }
+    },
+    methods: {
+      onScroll (e) {
+        this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
+      },
+      onResize () {
+        this.windowSize = { x: window.innerWidth, y: window.innerHeight }
+      }
+    },
+    mounted () {
+      this.onResize()
+    }
+    })
+  </script>
+
+
+
+  <style>
+  #create .speed-dial {
+    position: absolute;
+  }
+
+  #create .btn--floating {
+    position: relative;
+  }
+  .custom-loader {
+    animation: loader 1s infinite;
+    display: flex;
+  }
+  @-moz-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-o-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+</body>
+</html>
