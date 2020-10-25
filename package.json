@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/gravitymir/call_record_from_folder_to_telegram/issues"
   },
-  "homepage": "https://github.com/gravitymir/call_record_from_folder_to_telegram#readme"
+  "homepage": "https://github.com/gravitymir/call_record_from_folder_to_telegram#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "moment": "^2.29.1",
+    "telegraf": "^3.38.0"
+  }
 }
