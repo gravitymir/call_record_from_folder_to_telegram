@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const { time } = require('console');
 
-let bot = new Telegraf('354215638:AAEmWoBPUf7544u_xGBljYDwGlDHyPnlJ2E');
+let bot = new Telegraf('number:token');
 bot.context.owner = 283404954;
 bot.context.id = 354215638;
 bot.context.first_name = 'Enebra';
